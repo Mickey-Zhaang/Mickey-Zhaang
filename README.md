@@ -1,4 +1,4 @@
-### Hey 👋 
+### 𝓗𝓮𝔂 👋 
 
 - 🔭 I’m currently working on getting situated in College
 - 🌱 I’m currently learning how to code
