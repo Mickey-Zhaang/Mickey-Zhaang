@@ -1,9 +1,4 @@
-### Hi there 👋
-
-<!--
-**Mickey-Zhaang/Mickey-Zhaang** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
+### Hey 👋 
 
 - 🔭 I’m currently working on getting situated in College
 - 🌱 I’m currently learning how to code
@@ -13,5 +8,5 @@ Here are some ideas to get you started:
 - 📫 How to reach me: Best contact is either through Insta or Whatsapp | insta: @mickey_zhaang 
 - 😄 Pronouns: (he/him)
 - ⚡ Fun fact: I feel like I've already said this alot but I am fond of poetry. 💙 I especially like to write my own: got into Colby with a creative writing portfolio.
--->
+
 
