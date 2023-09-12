@@ -9,4 +9,4 @@
 - 😄 Pronouns: (he/him)
 - ⚡ Fun fact: I feel like I've already said this alot but I am fond of poetry. 💙 I especially like to write my own: got into Colby with a creative writing portfolio.
 
-
+(っ◔◡◔)っ ♥ Byeeee ♥
