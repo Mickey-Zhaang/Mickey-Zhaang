@@ -12,5 +12,6 @@ Here are some ideas to get you started:
 - 💬 Ask me about anything! I'm free to talk openly to anyone and willing to listen to anything (I like music).
 - 📫 How to reach me: Best contact is either through Insta or Whatsapp | insta: @mickey_zhaang 
 - 😄 Pronouns: (he/him)
-- ⚡ Fun fact: I feel like I've already said this alot but I am fond of poetry. 💙 I especially like to write my own: got into Colby with a creative writing portfolio focused on a collection of poems about someone I adored. Though there were a few missing as not even the College can have poems that were special to me and her.
+- ⚡ Fun fact: I feel like I've already said this alot but I am fond of poetry. 💙 I especially like to write my own: got into Colby with a creative writing portfolio.
 -->
+
