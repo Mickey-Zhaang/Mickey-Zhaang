@@ -19,7 +19,7 @@ body {
     color: rgb(207, 207, 207);
 }
 
-#nav_bar {
+#nav_bar { 
     display: flex;
     align-items: center;
     width: 100%;
@@ -28,15 +28,17 @@ body {
 }
 
 .nav_btn {
-    border: none;
+    display: flex;
+    align-items: center;
     font-family: inherit;
     font-size: 24px;
     color: white;
-    background-color: inherit;
     height: 100%;
     padding-left: 20px;
     padding-right: 20px;
-    
+    user-select: none;
+    text-decoration: none;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
 .nav_btn:hover {
@@ -45,7 +47,7 @@ body {
     color: rgb(245, 245, 245); /* Slightly brighten the text */
 }
 
-.nav_btn_Portfolio {
+#nav_btn_Portfolio {
     padding-left: 20px;
     font-size: 36px;
 }
