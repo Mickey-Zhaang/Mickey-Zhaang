@@ -3,6 +3,16 @@
     src: url("/CoffeeFills.ttf") format("truetype");
     font-display: swap; 
 }
+@font-face {
+    font-family: crappy;
+    src: url("/CrappyHandwriting.ttf") format("truetype");
+    font-display: swap; 
+}
+@font-face {
+    font-family: vintage;
+    src: url("/Vintage.ttf") format("truetype");
+    font-display: swap; 
+}
 
 :root {
     --primary_color: #570013; 
@@ -54,21 +64,135 @@ body {
 }
  
 /*Portfolio page specific */
-#player_card_wrapper {
+.player_card_wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
+    justify-self: center;
     width: 100%;
+    max-width: 1400px;
     height: 900px;
     overflow: hidden;
+    padding: 100px;
+    margin-top: -100px;
     box-sizing: border-box; /*removed horizontal scroll bar*/
 }
 
-#player_card {
+.player_card {
+    display: grid;
+    grid-template-areas: 
+        "bio bio bio"
+        "stats abilities pfp"
+        "stats about_me my_background"
+        "stats about_me my_background";
+    grid-template-rows: 2fr 5fr 4fr 4fr;
+    grid-template-columns: 1fr 3fr 2fr;
     width: 100%;
     height: 100%;
     margin-top: 100px;
     margin-left: 15px;
     margin-right: 15px;
-    border: 8px solid rgb(107, 107, 107);
+    border: 6px solid rgb(107, 107, 107);
 }
+
+
+/*Biographics*/
+.player_card > div.bio {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-family: Crappy;
+    grid-area: bio;
+}
+
+.bio_subcontainer {
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    color: white;
+    border: 1px solid rgb(107, 107, 107);
+}
+.bio_subcontainer:hover{
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.8), 
+                0 0 16px rgba(255, 255, 255, 0.6); 
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.8), 
+                0 0 16px rgba(255, 255, 255, 0.6); 
+    color: rgb(245, 245, 245);
+}
+
+.player_card > div.abilities {
+    grid-area: abilities;
+}
+
+/*Stats*/
+.player_card > div.stats {
+    font-family: crappy;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    grid-area: stats;
+    margin: 10px;
+    border-radius: 20%;
+    background-color: #000000;
+    overflow: hidden;
+}
+
+.stats_heading{
+    font-size: 40px;
+    margin-top: 10px;
+    margin-bottom: -10px;
+}
+
+.stats_subcontainer{
+    display: block;
+    align-self: center;
+    font-size: 24px;
+    margin-top: -40px;
+}
+
+
+.player_card > div.about_me {
+    grid-area: about_me;
+    align-items: center;
+}
+
+/*Profile Picture*/
+.player_card > div.pfp {
+    grid-area: pfp;
+    display: flex; 
+    justify-self: center;
+    justify-content: center; 
+    align-items: center; 
+    width: 300px; 
+    height: 300px; 
+    overflow: hidden; 
+    background: linear-gradient(to bottom, #4e010e, #804141);
+    border: 4px solid rgb(107, 107, 107);
+    padding: 8px; 
+}
+
+.player_card > div.pfp:hover {
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.8), /* Bright glow */
+                0 0 16px rgba(255, 255, 255, 0.6); /* Softer outer aura */
+    color: rgb(245, 245, 245); /* Slightly brighten the text */
+}
+
+.player_card > div.pfp img {
+    border-radius: 80%; 
+    width: 85%;
+    height: 120%;
+    object-fit: cover;
+
+}
+
+.player_card > div.my_background {
+    grid-area: my_background;
+    align-items: center;
+}
+
+
