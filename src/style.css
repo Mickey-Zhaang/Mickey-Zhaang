@@ -292,4 +292,29 @@ body {
 }
 /*End My Background*/
 
+/*Contacts Page*/
 
+.content_box{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /*y direction*/
+    justify-content: flex-start; /*x direction*/
+    width: 90%;
+    height: 90%;
+    margin-top: 2em;
+    padding-left: 1em;
+    border: 1px solid white;
+    box-sizing: border-box; 
+}
+
+.contact_list{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.contact_list_links{
+    font-family: crappy;
+    text-decoration: none;
+    font-size: 18px;
+}
