@@ -31,6 +31,7 @@ body {
     padding: 0;
     background-color: var(--secondary_color);
     color: rgb(207, 207, 207);
+    min-width: 1380px;
 }
 
 /*Portfolio page specific */
@@ -40,9 +41,7 @@ body {
     justify-content: center;
     justify-self: center;
     width: 100%;
-    max-width: 1400px;
-    min-width: 1399px;
-    height: 1180px;
+    height: 1170px;
     padding: 100px;
     margin-top: -100px;
     box-sizing: border-box; /*removed horizontal scroll bar*/
@@ -195,6 +194,7 @@ body {
 
 /*Abilities*/
 .player_card > div.abilities {
+    display: flex;
     grid-area: abilities;
 }
 
@@ -246,6 +246,7 @@ body {
 
 /*About Me*/
 .player_card > div.about_me {
+    display: flex;
     grid-area: about_me;
     align-items: center;
 }
@@ -262,7 +263,7 @@ body {
     width: 300px; 
     height: 420px; 
     overflow: hidden; 
-    border: 2px solid rgb(107, 107, 107);
+    border: 2px solid rgb(238, 237, 237);
     padding: 8px; 
     margin-top: 20px;
 }
@@ -285,8 +286,9 @@ body {
 /*My Background*/
 .player_card > div.my_background {
     grid-area: my_background;
-    align-items: center;
-    margin-top: -95px;
+    display: flex;
+    margin-top: -5.2rem;
+    margin-bottom: 1.5rem;
 }
 /*End My Background*/
 
