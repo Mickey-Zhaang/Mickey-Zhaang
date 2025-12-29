@@ -7,7 +7,7 @@ function App() {
   return (
     <Container>
       <Navbar
-        brand="Portfolio"
+        brand="Mickey Zhang"
         items={[
           { label: 'Home', href: '#home' },
           { label: 'About', href: '#about' },

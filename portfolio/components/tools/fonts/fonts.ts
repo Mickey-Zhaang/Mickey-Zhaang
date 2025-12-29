@@ -1,6 +1,10 @@
 export const fonts = {
-  primary:
-    "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif",
-  display: "'Playfair Display', serif",
-  mono: "'Fira Code', 'Courier New', monospace",
+  primary: 'Helvetica',
+  display: "'Good Times', Helvetica, Arial, sans-serif",
+} as const;
+
+export const letterSpacing = {
+  normal: '0em',
+  wide: '0.1em',
+  widest: '0.2em',
 } as const;

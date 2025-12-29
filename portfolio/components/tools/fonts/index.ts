@@ -1,1 +1,1 @@
-export { fonts } from './fonts';
+export { fonts, letterSpacing } from './fonts';

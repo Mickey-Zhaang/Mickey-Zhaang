@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Good Times Font Face */
+@font-face {
+  font-family: 'Good Times';
+  src: url('./components/tools/fonts/Good Times.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 html, body, #root {
   width: 100%;
   height: 100%;
