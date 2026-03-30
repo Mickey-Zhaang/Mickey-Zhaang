@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react';
 
 import Button from '../ui/Button';
 
-const NAME = 'Mickey Zhang';
+const NAME = 'XXXX XXXXX';
 const TAGLINE = 'Placeholder tagline — what you build, who you are.';
 const CTA_LABEL = 'See my work';
 const CTA_HREF = '#projects';

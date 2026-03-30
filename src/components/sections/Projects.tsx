@@ -34,7 +34,7 @@ const PROJECTS: Project[] = [
 export default function Projects() {
 	return (
 		<SectionWrapper id="projects" ariaLabel="Projects">
-			<SectionContent>
+			<SectionContent narrow>
 				<SectionHeading>Projects</SectionHeading>
 				<StyledGrid>
 					{PROJECTS.map(project => (
