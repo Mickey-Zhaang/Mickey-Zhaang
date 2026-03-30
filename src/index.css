@@ -1,49 +1,122 @@
+:root {
+	/* ── Colors ───────────────────────────────────────────────────────────────── */
+	--color-bg: #ffffff;
+	--color-bg-subtle: #f5f5f5;
+	--color-surface: #fafafa;
+	--color-border: #e0e0e0;
+	--color-text-primary: #333333;
+	--color-text-secondary: #666666;
+	--color-text-inverse: #ffffff;
+	--color-accent: #333333;
+	--color-accent-hover: #555555;
+
+	/* Scrollbar */
+	--scrollbar-track: #0a0101;
+	--scrollbar-thumb: #2a1a1a;
+	--scrollbar-thumb-hover: #3a2a2a;
+
+	/* ── Typography ───────────────────────────────────────────────────────────── */
+	--font-family-base: 'Roboto', system-ui, -apple-system, sans-serif;
+
+	--font-size-xs: 0.75rem;
+	--font-size-sm: 0.875rem;
+	--font-size-base: 1rem;
+	--font-size-md: 1.125rem;
+	--font-size-lg: 1.5rem;
+	--font-size-xl: 2rem;
+	--font-size-2xl: 3rem;
+	--font-size-3xl: 4rem;
+
+	--font-weight-light: 300;
+	--font-weight-regular: 400;
+	--font-weight-medium: 500;
+	--font-weight-bold: 700;
+
+	--line-height-tight: 1.2;
+	--line-height-normal: 1.6;
+	--line-height-loose: 1.8;
+
+	/* ── Spacing (8-point grid) ───────────────────────────────────────────────── */
+	--space-1: 0.25rem;
+	--space-2: 0.5rem;
+	--space-3: 0.75rem;
+	--space-4: 1rem;
+	--space-6: 1.5rem;
+	--space-8: 2rem;
+	--space-12: 3rem;
+	--space-16: 4rem;
+	--space-24: 6rem;
+	--space-32: 8rem;
+
+	/* ── Layout ───────────────────────────────────────────────────────────────── */
+	--max-width-content: 1100px;
+	--max-width-narrow: 680px;
+	--navbar-height: 64px;
+
+	/* ── Transitions ──────────────────────────────────────────────────────────── */
+	--duration-fast: 150ms;
+	--duration-normal: 250ms;
+	--duration-slow: 400ms;
+	--duration-reveal: 600ms;
+	--ease-default: ease;
+	--ease-out: cubic-bezier(0, 0, 0.2, 1);
+	--ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+	/* ── Z-index layers ───────────────────────────────────────────────────────── */
+	--z-below: -1;
+	--z-base: 0;
+	--z-raised: 10;
+	--z-overlay: 100;
+	--z-navbar: 200;
+	--z-modal: 300;
+	--z-toast: 400;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
-  font-family:
-    'Roboto',
-    system-ui,
-    -apple-system,
-    sans-serif;
-  line-height: 1.6;
-  color: #333;
-  background-color: #ffffff;
+	font-family: var(--font-family-base);
+	line-height: var(--line-height-normal);
+	color: var(--color-text-primary);
+	background-color: var(--color-bg);
 }
 
 #root {
-  min-height: 110vh;
+	min-height: 110vh;
 }
 
-/* Custom Scrollbar Styles */
-/* For Chrome, Safari, Edge */
+/* Custom Scrollbar — Chrome, Safari, Edge */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-  background: #3a2a2a;
+	width: 10px;
+	height: 10px;
+	background: var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0101;
-  border-radius: 5px;
+	background: var(--scrollbar-track);
+	border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2a1a1a;
-  border-radius: 5px;
-  border: 2px solid #0a0101;
+	background: var(--scrollbar-thumb);
+	border-radius: 5px;
+	border: 2px solid var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3a2a2a;
+	background: var(--scrollbar-thumb-hover);
 }
 
-/* For Firefox */
+/* Custom Scrollbar — Firefox */
 * {
-  scrollbar-width: thin;
-  scrollbar-color: #2a1a1a #0a0101;
+	scrollbar-width: thin;
+	scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
