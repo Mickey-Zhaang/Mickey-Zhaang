@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 import type { Project } from '../../types';
 import ProjectCard from '../ui/ProjectCard';
+import SectionContent from '../ui/SectionContent';
+import SectionHeading from '../ui/SectionHeading';
 import SectionWrapper from '../ui/SectionWrapper';
 
 interface ProjectsProps {
@@ -11,30 +13,19 @@ interface ProjectsProps {
 export default function Projects({ projects }: ProjectsProps) {
 	return (
 		<SectionWrapper id="projects" ariaLabel="Projects">
-			<StyledContent>
-				<StyledHeading>Projects</StyledHeading>
+			<SectionContent>
+				<SectionHeading>Projects</SectionHeading>
 				<StyledGrid>
 					{projects.map(project => (
 						<ProjectCard key={project.id} project={project} />
 					))}
 				</StyledGrid>
-			</StyledContent>
+			</SectionContent>
 		</SectionWrapper>
 	);
 }
 
-const StyledContent = styled.div`
-	max-width: var(--max-width-content);
-	margin: 0 auto;
-	padding: var(--space-24) var(--space-8);
-`;
-
-const StyledHeading = styled.h2`
-	font-size: var(--font-size-xl);
-	font-weight: var(--font-weight-bold);
-	color: var(--color-text-primary);
-	margin-bottom: var(--space-8);
-`;
+// ── Styled Components ──────────────────────────────────────────────────────────
 
 const StyledGrid = styled.div`
 	display: grid;

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import type { Project } from '../../types';
+import Tag from './Tag';
 
 interface ProjectCardProps {
 	project: Project;
@@ -15,18 +16,20 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 			<StyledDescription>{description}</StyledDescription>
 			<StyledTagList>
 				{tags.map(tag => (
-					<StyledTag key={tag}>{tag}</StyledTag>
+					<Tag key={tag}>{tag}</Tag>
 				))}
 			</StyledTagList>
 			{(liveUrl ?? repoUrl) && (
 				<StyledCardLinks>
-					{liveUrl && <a href={liveUrl}>Live</a>}
-					{repoUrl && <a href={repoUrl}>Repo</a>}
+					{liveUrl && <StyledLink href={liveUrl}>Live</StyledLink>}
+					{repoUrl && <StyledLink href={repoUrl}>Repo</StyledLink>}
 				</StyledCardLinks>
 			)}
 		</StyledCard>
 	);
 }
+
+// ── Styled Components ──────────────────────────────────────────────────────────
 
 const StyledCard = styled.article`
 	display: flex;
@@ -35,7 +38,7 @@ const StyledCard = styled.article`
 	padding: var(--space-6);
 	background: var(--color-surface);
 	border: 1px solid var(--color-border);
-	border-radius: 4px;
+	border-radius: var(--radius-md);
 `;
 
 const StyledTitle = styled.h3`
@@ -58,28 +61,19 @@ const StyledTagList = styled.ul`
 	margin-top: auto;
 `;
 
-const StyledTag = styled.li`
-	font-size: var(--font-size-xs);
-	font-weight: var(--font-weight-medium);
-	color: var(--color-text-secondary);
-	border: 1px solid var(--color-border);
-	border-radius: 2px;
-	padding: var(--space-1) var(--space-2);
-`;
-
 const StyledCardLinks = styled.div`
 	display: flex;
 	gap: var(--space-4);
+`;
 
-	a {
-		font-size: var(--font-size-sm);
-		font-weight: var(--font-weight-medium);
-		color: var(--color-accent);
-		text-decoration: none;
-		transition: color var(--duration-fast) var(--ease-default);
+const StyledLink = styled.a`
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-medium);
+	color: var(--color-text-secondary);
+	text-decoration: none;
+	transition: color var(--duration-fast) var(--ease-default);
 
-		&:hover {
-			color: var(--color-accent-hover);
-		}
+	&:hover {
+		color: var(--color-text-primary);
 	}
 `;

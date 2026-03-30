@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
+import SectionContent from '../ui/SectionContent';
+import SectionHeading from '../ui/SectionHeading';
 import SectionWrapper from '../ui/SectionWrapper';
+import Tag from '../ui/Tag';
 
 interface AboutProps {
 	bio: string[];
@@ -10,8 +13,8 @@ interface AboutProps {
 export default function About({ bio, skills }: AboutProps) {
 	return (
 		<SectionWrapper id="about" ariaLabel="About me">
-			<StyledContent>
-				<StyledHeading>About</StyledHeading>
+			<SectionContent narrow>
+				<SectionHeading>About</SectionHeading>
 				<StyledBioBlock>
 					{bio.map((paragraph, i) => (
 						<StyledBio key={i}>{paragraph}</StyledBio>
@@ -20,27 +23,16 @@ export default function About({ bio, skills }: AboutProps) {
 				{skills && skills.length > 0 && (
 					<StyledSkillList>
 						{skills.map(skill => (
-							<StyledSkill key={skill}>{skill}</StyledSkill>
+							<Tag key={skill}>{skill}</Tag>
 						))}
 					</StyledSkillList>
 				)}
-			</StyledContent>
+			</SectionContent>
 		</SectionWrapper>
 	);
 }
 
-const StyledContent = styled.div`
-	max-width: var(--max-width-narrow);
-	margin: 0 auto;
-	padding: var(--space-24) var(--space-8);
-`;
-
-const StyledHeading = styled.h2`
-	font-size: var(--font-size-xl);
-	font-weight: var(--font-weight-bold);
-	color: var(--color-text-primary);
-	margin-bottom: var(--space-8);
-`;
+// ── Styled Components ──────────────────────────────────────────────────────────
 
 const StyledBioBlock = styled.div`
 	display: flex;
@@ -60,13 +52,4 @@ const StyledSkillList = styled.ul`
 	flex-wrap: wrap;
 	gap: var(--space-2);
 	list-style: none;
-`;
-
-const StyledSkill = styled.li`
-	font-size: var(--font-size-sm);
-	font-weight: var(--font-weight-medium);
-	color: var(--color-text-secondary);
-	border: 1px solid var(--color-border);
-	border-radius: 2px;
-	padding: var(--space-1) var(--space-3);
 `;

@@ -31,7 +31,7 @@ export default function SectionWrapper({
 const StyledSection = styled.section<{ $isVisible: boolean }>`
 	opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
 	transform: ${({ $isVisible }) =>
-		$isVisible ? 'translateY(0)' : 'translateY(24px)'};
+		$isVisible ? 'translateY(0)' : 'translateY(20px)'};
 	transition:
 		opacity var(--duration-reveal) var(--ease-out),
 		transform var(--duration-reveal) var(--ease-out);

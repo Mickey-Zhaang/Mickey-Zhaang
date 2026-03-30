@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 import type { SocialLink } from '../../types';
+import SectionContent from '../ui/SectionContent';
+import SectionHeading from '../ui/SectionHeading';
 import SectionWrapper from '../ui/SectionWrapper';
 
 interface ContactProps {
@@ -11,8 +13,8 @@ interface ContactProps {
 export default function Contact({ email, socials }: ContactProps) {
 	return (
 		<SectionWrapper id="contact" ariaLabel="Contact">
-			<StyledContent>
-				<StyledHeading>Contact</StyledHeading>
+			<SectionContent narrow>
+				<SectionHeading>Contact</SectionHeading>
 				<StyledEmail href={`mailto:${email}`}>{email}</StyledEmail>
 				{socials && socials.length > 0 && (
 					<StyledSocialList>
@@ -25,23 +27,12 @@ export default function Contact({ email, socials }: ContactProps) {
 						))}
 					</StyledSocialList>
 				)}
-			</StyledContent>
+			</SectionContent>
 		</SectionWrapper>
 	);
 }
 
-const StyledContent = styled.div`
-	max-width: var(--max-width-narrow);
-	margin: 0 auto;
-	padding: var(--space-24) var(--space-8);
-`;
-
-const StyledHeading = styled.h2`
-	font-size: var(--font-size-xl);
-	font-weight: var(--font-weight-bold);
-	color: var(--color-text-primary);
-	margin-bottom: var(--space-8);
-`;
+// ── Styled Components ──────────────────────────────────────────────────────────
 
 const StyledEmail = styled.a`
 	display: inline-block;

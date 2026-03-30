@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import { useEffect, useRef } from 'react';
 
+import Button from '../ui/Button';
+
 interface HeroProps {
 	name: string;
 	tagline: string;
@@ -33,14 +35,16 @@ export default function Hero({ name, tagline, ctaLabel, ctaHref }: HeroProps) {
 				<StyledName data-hero-item>{name}</StyledName>
 				<StyledTagline data-hero-item>{tagline}</StyledTagline>
 				{ctaLabel && ctaHref && (
-					<StyledCta data-hero-item href={ctaHref}>
-						{ctaLabel}
-					</StyledCta>
+					<div data-hero-item>
+						<Button href={ctaHref}>{ctaLabel}</Button>
+					</div>
 				)}
 			</StyledInner>
 		</StyledHero>
 	);
 }
+
+// ── Styled Components ──────────────────────────────────────────────────────────
 
 const StyledHero = styled.div`
 	display: flex;
@@ -70,20 +74,4 @@ const StyledTagline = styled.p`
 	color: var(--color-text-secondary);
 	line-height: var(--line-height-normal);
 	margin-bottom: var(--space-8);
-`;
-
-const StyledCta = styled.a`
-	display: inline-block;
-	font-size: var(--font-size-base);
-	font-weight: var(--font-weight-medium);
-	color: var(--color-text-inverse);
-	background: var(--color-accent);
-	padding: var(--space-3) var(--space-6);
-	border-radius: 2px;
-	text-decoration: none;
-	transition: background var(--duration-normal) var(--ease-default);
-
-	&:hover {
-		background: var(--color-accent-hover);
-	}
 `;
