@@ -5,28 +5,28 @@ import SectionHeading from '../ui/SectionHeading';
 import SectionWrapper from '../ui/SectionWrapper';
 import Tag from '../ui/Tag';
 
-interface AboutProps {
-	bio: string[];
-	skills?: string[];
-}
+const BIO = [
+	'Placeholder — write a sentence or two about who you are and what you do.',
+	'Placeholder — background, interests, or what drives your work.',
+];
 
-export default function About({ bio, skills }: AboutProps) {
+const SKILLS = ['TypeScript', 'React', 'Node.js', 'placeholder'];
+
+export default function About() {
 	return (
 		<SectionWrapper id="about" ariaLabel="About me">
 			<SectionContent narrow>
 				<SectionHeading>About</SectionHeading>
 				<StyledBioBlock>
-					{bio.map((paragraph, i) => (
+					{BIO.map((paragraph, i) => (
 						<StyledBio key={i}>{paragraph}</StyledBio>
 					))}
 				</StyledBioBlock>
-				{skills && skills.length > 0 && (
-					<StyledSkillList>
-						{skills.map(skill => (
-							<Tag key={skill}>{skill}</Tag>
-						))}
-					</StyledSkillList>
-				)}
+				<StyledSkillList>
+					{SKILLS.map(skill => (
+						<Tag key={skill}>{skill}</Tag>
+					))}
+				</StyledSkillList>
 			</SectionContent>
 		</SectionWrapper>
 	);

@@ -1,20 +1,20 @@
 import styled from 'styled-components';
 
-interface FooterProps {
-	name: string;
-}
+const NAME = 'Mickey Zhang';
 
-export default function Footer({ name }: FooterProps) {
+export default function Footer() {
 	const year = new Date().getFullYear();
 
 	return (
 		<StyledFooter>
 			<StyledText>
-				{name} &copy; {year}
+				{NAME} &copy; {year}
 			</StyledText>
 		</StyledFooter>
 	);
 }
+
+// ── Styled Components ──────────────────────────────────────────────────────────
 
 const StyledFooter = styled.footer`
 	margin-top: auto;

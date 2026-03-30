@@ -1,12 +1,12 @@
 :root {
 	/* ── Colors ───────────────────────────────────────────────────────────────── */
-	--color-bg: #fdf8ef;
-	--color-bg-subtle: #f5eddf;
-	--color-surface: #f9f3e8;
-	--color-border: #e0cdb8;
+	--color-bg: #fef5e4;
+	--color-bg-subtle: #f5e8d3;
+	--color-surface: #faefe0;
+	--color-border: #dfc5a8;
 	--color-text-primary: #2a2118;
 	--color-text-secondary: #6e5f50;
-	--color-text-inverse: #fdf8ef;
+	--color-text-inverse: #fef5e4;
 	--color-accent: #3d2b1f;
 	--color-accent-hover: #5c3d2e;
 

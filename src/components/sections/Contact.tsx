@@ -1,32 +1,38 @@
 import styled from 'styled-components';
 
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
+
 import type { SocialLink } from '../../types';
 import SectionContent from '../ui/SectionContent';
 import SectionHeading from '../ui/SectionHeading';
 import SectionWrapper from '../ui/SectionWrapper';
 
-interface ContactProps {
-	email: string;
-	socials?: SocialLink[];
-}
+const EMAIL = 'placeholder@email.com';
 
-export default function Contact({ email, socials }: ContactProps) {
+const SOCIALS: SocialLink[] = [
+	{ label: 'GitHub', href: '#', icon: FaGithub },
+	{ label: 'LinkedIn', href: '#', icon: FaLinkedin },
+];
+
+export default function Contact() {
 	return (
 		<SectionWrapper id="contact" ariaLabel="Contact">
 			<SectionContent narrow>
 				<SectionHeading>Contact</SectionHeading>
-				<StyledEmail href={`mailto:${email}`}>{email}</StyledEmail>
-				{socials && socials.length > 0 && (
-					<StyledSocialList>
-						{socials.map(social => (
-							<StyledSocialItem key={social.label}>
-								<a href={social.href} target="_blank" rel="noreferrer">
-									{social.label}
-								</a>
-							</StyledSocialItem>
-						))}
-					</StyledSocialList>
-				)}
+				<StyledEmail href={`mailto:${EMAIL}`}>{EMAIL}</StyledEmail>
+				<StyledSocialList>
+					{SOCIALS.map(({ label, href, icon: Icon }) => (
+						<StyledSocialItem key={label}>
+							<a
+								href={href}
+								target="_blank"
+								rel="noreferrer"
+								aria-label={label}>
+								{Icon ? <Icon size={20} /> : label}
+							</a>
+						</StyledSocialItem>
+					))}
+				</StyledSocialList>
 			</SectionContent>
 		</SectionWrapper>
 	);
@@ -50,14 +56,14 @@ const StyledEmail = styled.a`
 
 const StyledSocialList = styled.ul`
 	display: flex;
-	gap: var(--space-6);
+	gap: var(--space-4);
 	list-style: none;
 `;
 
 const StyledSocialItem = styled.li`
 	a {
-		font-size: var(--font-size-sm);
-		font-weight: var(--font-weight-medium);
+		display: flex;
+		align-items: center;
 		color: var(--color-text-secondary);
 		text-decoration: none;
 		transition: color var(--duration-fast) var(--ease-default);

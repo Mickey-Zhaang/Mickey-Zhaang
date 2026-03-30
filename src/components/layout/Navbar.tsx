@@ -3,20 +3,23 @@ import styled from 'styled-components';
 import { useScrollProgress } from '../../hooks/useScrollProgress';
 import type { NavLink } from '../../types';
 
-interface NavbarProps {
-	links: NavLink[];
-	siteName: string;
-}
+const NAV_LINKS: NavLink[] = [
+	{ label: 'About', href: '#about' },
+	{ label: 'Projects', href: '#projects' },
+	{ label: 'Contact', href: '#contact' },
+];
 
-export default function Navbar({ links, siteName }: NavbarProps) {
+const SITE_NAME = 'Mickey Zhang';
+
+export default function Navbar() {
 	const progress = useScrollProgress();
 
 	return (
 		<StyledNav>
 			<StyledInner>
-				<StyledLogoText>{siteName}</StyledLogoText>
+				<StyledLogoText>{SITE_NAME}</StyledLogoText>
 				<StyledLinks>
-					{links.map(link => (
+					{NAV_LINKS.map(link => (
 						<li key={link.href}>
 							<StyledLink href={link.href}>{link.label}</StyledLink>
 						</li>
@@ -27,6 +30,8 @@ export default function Navbar({ links, siteName }: NavbarProps) {
 		</StyledNav>
 	);
 }
+
+// ── Styled Components ──────────────────────────────────────────────────────────
 
 const StyledNav = styled.nav`
 	position: fixed;

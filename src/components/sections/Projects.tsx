@@ -6,17 +6,38 @@ import SectionContent from '../ui/SectionContent';
 import SectionHeading from '../ui/SectionHeading';
 import SectionWrapper from '../ui/SectionWrapper';
 
-interface ProjectsProps {
-	projects: Project[];
-}
+const PROJECTS: Project[] = [
+	{
+		id: 'project-1',
+		title: 'Project One',
+		description: 'A brief description of what this project does and why.',
+		tags: ['React', 'TypeScript'],
+		liveUrl: '#',
+		repoUrl: '#',
+	},
+	{
+		id: 'project-2',
+		title: 'Project Two',
+		description: 'Another project — replace with real content.',
+		tags: ['Node.js', 'PostgreSQL'],
+		repoUrl: '#',
+	},
+	{
+		id: 'project-3',
+		title: 'Project Three',
+		description: 'One more placeholder to fill the grid.',
+		tags: ['TypeScript', 'Vite'],
+		liveUrl: '#',
+	},
+];
 
-export default function Projects({ projects }: ProjectsProps) {
+export default function Projects() {
 	return (
 		<SectionWrapper id="projects" ariaLabel="Projects">
 			<SectionContent>
 				<SectionHeading>Projects</SectionHeading>
 				<StyledGrid>
-					{projects.map(project => (
+					{PROJECTS.map(project => (
 						<ProjectCard key={project.id} project={project} />
 					))}
 				</StyledGrid>

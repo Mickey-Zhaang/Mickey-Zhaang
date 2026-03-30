@@ -1,3 +1,4 @@
+import type { ComponentType } from 'react';
 import type { RefObject } from 'react';
 
 export interface NavLink {
@@ -17,6 +18,7 @@ export interface Project {
 export interface SocialLink {
 	label: string;
 	href: string;
+	icon?: ComponentType<{ size?: number }>;
 }
 
 export interface ScrollRevealState {

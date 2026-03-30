@@ -5,14 +5,12 @@ import { useEffect, useRef } from 'react';
 
 import Button from '../ui/Button';
 
-interface HeroProps {
-	name: string;
-	tagline: string;
-	ctaLabel?: string;
-	ctaHref?: string;
-}
+const NAME = 'Mickey Zhang';
+const TAGLINE = 'Placeholder tagline — what you build, who you are.';
+const CTA_LABEL = 'See my work';
+const CTA_HREF = '#projects';
 
-export default function Hero({ name, tagline, ctaLabel, ctaHref }: HeroProps) {
+export default function Hero() {
 	const containerRef = useRef<HTMLDivElement | null>(null);
 
 	useEffect(() => {
@@ -20,8 +18,8 @@ export default function Hero({ name, tagline, ctaLabel, ctaHref }: HeroProps) {
 			gsap.from('[data-hero-item]', {
 				y: 40,
 				opacity: 0,
-				duration: 0.8,
-				stagger: 0.15,
+				duration: 0.6,
+				stagger: 0.12,
 				ease: 'power3.out',
 			});
 		}, containerRef);
@@ -32,13 +30,11 @@ export default function Hero({ name, tagline, ctaLabel, ctaHref }: HeroProps) {
 	return (
 		<StyledHero ref={containerRef}>
 			<StyledInner>
-				<StyledName data-hero-item>{name}</StyledName>
-				<StyledTagline data-hero-item>{tagline}</StyledTagline>
-				{ctaLabel && ctaHref && (
-					<div data-hero-item>
-						<Button href={ctaHref}>{ctaLabel}</Button>
-					</div>
-				)}
+				<StyledName data-hero-item>{NAME}</StyledName>
+				<StyledTagline data-hero-item>{TAGLINE}</StyledTagline>
+				<div data-hero-item>
+					<Button href={CTA_HREF}>{CTA_LABEL}</Button>
+				</div>
 			</StyledInner>
 		</StyledHero>
 	);
