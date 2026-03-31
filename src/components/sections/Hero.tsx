@@ -34,7 +34,7 @@ const ROLE_LABELS: RoleLabel[] = [
 	{
 		text: 'FRONTEND',
 		orientation: 'vertical-up',
-		top: '--4cqh',
+		top: '0cqh',
 		left: '27cqw',
 		size: '4.9cqw',
 	},
@@ -66,31 +66,31 @@ export default function Hero() {
 			tl.from('[data-orientation="vertical-down"]', { y: -50 }, 0.3);
 
 			// ─── 2. SCROLL EXIT TIMELINE ───────────────────────────────────────
-			// We create a new timeline specifically controlled by the scrollbar
+			// Tied to the hero element — fires when 20% of the hero has scrolled
+			// past the viewport top, well after the entrance finishes (~1s).
+			// ease: 'none' is correct for scrub — easing is already provided by
+			// the user's scroll momentum.
 			const exitTl = gsap.timeline({
 				scrollTrigger: {
-					start: '140vh',
-					end: '400vh',
-					scrub: true, // Ties the animation to the scroll progress
+					trigger: containerRef.current,
+					start: '20% top',
+					end: '+=300',
+					scrub: 1,
 				},
 				defaults: {
 					autoAlpha: 0,
-					immediateRender: false, // Wait until 140vh to measure starting positions
-					ease: 'power2.out', // 'none' is best for scrubbed animations so it doesn't feel laggy
+					immediateRender: false,
+					ease: 'none',
 				},
 			});
 
-			// We use the exact same offsets as the entrance to perfectly invert it.
-			// The '0' at the end ensures they all start retreating at the exact same time.
-
-			// Horizontal: Retreats back to the LEFT
-			exitTl.to('[data-hero-h]', { x: -50, stagger: 0.25 }, 0);
-
-			// Vertical-Up (Designer): Retreats back to the BOTTOM
-			exitTl.to('[data-orientation="vertical-up"]', { y: -50 }, 0.2);
-
-			// Vertical-Down (Frontend): Retreats back to the TOP
-			exitTl.to('[data-orientation="vertical-down"]', { y: 50 }, 0.2);
+			// Mirror entrance offsets exactly so exit feels like a reverse playback.
+			// Horizontal (ENGINEER, DESIGNER): entered from left → exit back left
+			exitTl.to('[data-hero-h]', { x: -50, stagger: 0.15 }, 0);
+			// FRONTEND is vertical-up: entered from below (y:50) → exit back down
+			exitTl.to('[data-orientation="vertical-up"]', { y: 50 }, 0);
+			// DEVELOPER is vertical-down: entered from above (y:-50) → exit back up
+			exitTl.to('[data-orientation="vertical-down"]', { y: -50 }, 0);
 		}, containerRef);
 
 		return () => ctx.revert();
@@ -108,8 +108,7 @@ export default function Hero() {
 						$size={label.size}
 						// 👇 CRITICAL FIX: Add this so GSAP can find the vertical elements
 						data-orientation={label.orientation}
-						data-hero-h={label.orientation === 'horizontal' ? true : undefined}
-						data-hero-v={label.orientation !== 'horizontal' ? true : undefined}>
+						data-hero-h={label.orientation === 'horizontal' ? true : undefined}>
 						{label.text}
 					</StyledLabel>
 				))}
