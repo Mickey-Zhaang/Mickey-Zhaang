@@ -4,6 +4,8 @@ import styled from 'styled-components';
 
 import { useEffect, useRef } from 'react';
 
+import { FaLocationDot } from 'react-icons/fa6';
+
 gsap.registerPlugin(ScrollTrigger);
 
 type LabelOrientation = 'horizontal' | 'vertical-up' | 'vertical-down';
@@ -20,32 +22,44 @@ const ROLE_LABELS: RoleLabel[] = [
 	{
 		text: 'ENGINEER',
 		orientation: 'horizontal',
-		top: '52cqh',
+		top: '35cqh',
 		left: '12cqw',
 		size: '6.6cqw',
 	},
 	{
 		text: 'DESIGNER',
 		orientation: 'horizontal',
-		top: '38cqh',
+		top: '22cqh',
 		left: '34cqw',
 		size: '5.5cqw',
 	},
 	{
+		text: 'DATA',
+		orientation: 'horizontal',
+		top: '50cqh',
+		left: '29cqw',
+		size: '5.3cqw',
+	},
+	{
 		text: 'FRONTEND',
 		orientation: 'vertical-up',
-		top: '0cqh',
+		top: '-16cqh',
 		left: '27cqw',
 		size: '4.9cqw',
 	},
 	{
 		text: 'DEVELOPER',
 		orientation: 'vertical-down',
-		top: '55cqh',
-		left: '44cqw',
+		top: '38cqh',
+		left: '43cqw',
 		size: '4.8cqw',
 	},
 ];
+
+const SIDEBAR = {
+	bio: 'I like coffee and cats :)',
+	location: 'San Francisco, USA',
+};
 
 export default function Hero() {
 	const containerRef = useRef<HTMLElement | null>(null);
@@ -66,14 +80,10 @@ export default function Hero() {
 			tl.from('[data-orientation="vertical-down"]', { y: -50 }, 0.3);
 
 			// ─── 2. SCROLL EXIT TIMELINE ───────────────────────────────────────
-			// Tied to the hero element — fires when 20% of the hero has scrolled
-			// past the viewport top, well after the entrance finishes (~1s).
-			// ease: 'none' is correct for scrub — easing is already provided by
-			// the user's scroll momentum.
 			const exitTl = gsap.timeline({
 				scrollTrigger: {
 					trigger: containerRef.current,
-					start: '20% top',
+					start: '10% top',
 					end: '+=300',
 					scrub: 1,
 				},
@@ -84,12 +94,8 @@ export default function Hero() {
 				},
 			});
 
-			// Mirror entrance offsets exactly so exit feels like a reverse playback.
-			// Horizontal (ENGINEER, DESIGNER): entered from left → exit back left
-			exitTl.to('[data-hero-h]', { x: -50, stagger: 0.15 }, 0);
-			// FRONTEND is vertical-up: entered from below (y:50) → exit back down
+			exitTl.to('[data-hero-h]', { x: -50, stagger: 0.25 }, 0);
 			exitTl.to('[data-orientation="vertical-up"]', { y: 50 }, 0);
-			// DEVELOPER is vertical-down: entered from above (y:-50) → exit back up
 			exitTl.to('[data-orientation="vertical-down"]', { y: -50 }, 0);
 		}, containerRef);
 
@@ -106,12 +112,19 @@ export default function Hero() {
 						$top={label.top}
 						$left={label.left}
 						$size={label.size}
-						// 👇 CRITICAL FIX: Add this so GSAP can find the vertical elements
 						data-orientation={label.orientation}
 						data-hero-h={label.orientation === 'horizontal' ? true : undefined}>
 						{label.text}
 					</StyledLabel>
 				))}
+				<StyledSidebar>
+					<StyledPhoto />
+					<StyledBio>{SIDEBAR.bio}</StyledBio>
+					<StyledLocation>
+						<FaLocationDot size={14} />
+						{SIDEBAR.location}
+					</StyledLocation>
+				</StyledSidebar>
 			</StyledComposition>
 		</StyledHero>
 	);
@@ -123,7 +136,7 @@ const StyledHero = styled.section`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	min-height: 100vh;
+	min-height: 120vh;
 	padding: calc(var(--navbar-height) + var(--space-16)) var(--space-8)
 		var(--space-16);
 `;
@@ -134,6 +147,50 @@ const StyledComposition = styled.div`
 	width: 100%;
 	max-width: var(--max-width-content);
 	aspect-ratio: 2 / 1;
+
+	@media (max-width: 600px) {
+		aspect-ratio: unset;
+	}
+`;
+
+const StyledSidebar = styled.div`
+	position: absolute;
+	right: 6cqw;
+	top: -8cqh;
+	width: 28cqw;
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-3);
+
+	@media (max-width: 600px) {
+		position: static;
+		width: 100%;
+		max-width: 280px;
+		padding-top: var(--space-8);
+	}
+`;
+
+const StyledPhoto = styled.div`
+	width: 100%;
+	aspect-ratio: 3 / 4;
+	background: var(--color-bg-subtle);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-md);
+`;
+
+const StyledBio = styled.p`
+	font-size: var(--font-size-sm);
+	color: var(--color-text-secondary);
+	line-height: var(--line-height-normal);
+	margin-top: var(--space-1);
+`;
+
+const StyledLocation = styled.div`
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	font-size: var(--font-size-sm);
+	color: var(--color-text-secondary);
 `;
 
 interface StyledLabelProps {
@@ -144,7 +201,6 @@ interface StyledLabelProps {
 }
 
 const StyledLabel = styled.span<StyledLabelProps>`
-	/* 👇 CRITICAL FIX: Hide initially to prevent the text from flashing before GSAP takes over */
 	visibility: hidden;
 
 	position: absolute;
