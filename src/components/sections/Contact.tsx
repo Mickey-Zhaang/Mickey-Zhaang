@@ -7,7 +7,7 @@ import SectionContent from '../ui/SectionContent';
 import SectionHeading from '../ui/SectionHeading';
 import SectionWrapper from '../ui/SectionWrapper';
 
-const EMAIL = 'placeholder@email.com';
+const EMAIL = 'mickey.zhaang@email.com';
 
 const SOCIALS: SocialLink[] = [
 	{ label: 'GitHub', href: '#', icon: FaGithub },
@@ -50,7 +50,7 @@ const StyledEmail = styled.a`
 	transition: color var(--duration-fast) var(--ease-default);
 
 	&:hover {
-		color: var(--color-accent-hover);
+		color: var(--color-text-secondary);
 	}
 `;
 

@@ -16,7 +16,7 @@
 	--scrollbar-thumb-hover: #3a2a2a;
 
 	/* ── Typography ───────────────────────────────────────────────────────────── */
-	--font-family-base: 'Roboto', system-ui, -apple-system, sans-serif;
+	--font-family-base: 'Roboto', system-ui, -apple-system,  sans-serif;
 
 	--font-size-xs: 0.75rem;
 	--font-size-sm: 0.875rem;
@@ -26,6 +26,7 @@
 	--font-size-xl: 2rem;
 	--font-size-2xl: 3rem;
 	--font-size-3xl: 4rem;
+	--font-size-4xl: 5.5rem;
 
 	--font-weight-light: 300;
 	--font-weight-regular: 400;
