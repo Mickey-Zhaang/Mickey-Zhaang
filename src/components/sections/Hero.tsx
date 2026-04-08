@@ -136,7 +136,7 @@ const StyledHero = styled.section`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	min-height: 135vh;
+	min-height: 150vh;
 	padding: calc(var(--navbar-height) + var(--space-16)) var(--space-8)
 		var(--space-16);
 
@@ -148,8 +148,7 @@ const StyledHero = styled.section`
 const StyledComposition = styled.div`
 	container-type: size;
 	position: relative;
-	width: 100%;
-	max-width: var(--max-width-content);
+	width: var(--max-width-content);
 	aspect-ratio: 2 / 1;
 
 	@media (max-width: 768px) {
