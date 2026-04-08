@@ -11,20 +11,23 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 	const { title, description, tags, liveUrl, repoUrl } = project;
 
 	return (
-		<StyledCard>
-			<StyledTitle>{title}</StyledTitle>
-			<StyledDescription>{description}</StyledDescription>
-			<StyledTagList>
-				{tags.map(tag => (
-					<Tag key={tag}>{tag}</Tag>
-				))}
-			</StyledTagList>
-			{(liveUrl ?? repoUrl) && (
-				<StyledCardLinks>
-					{liveUrl && <StyledLink href={liveUrl}>Live</StyledLink>}
-					{repoUrl && <StyledLink href={repoUrl}>Repo</StyledLink>}
-				</StyledCardLinks>
-			)}
+		<StyledCard data-project-card="">
+			<StyledThumbnail />
+			<StyledCardBody>
+				<StyledTitle>{title}</StyledTitle>
+				<StyledDescription>{description}</StyledDescription>
+				<StyledTagList>
+					{tags.map(tag => (
+						<Tag key={tag}>{tag}</Tag>
+					))}
+				</StyledTagList>
+				{(liveUrl ?? repoUrl) && (
+					<StyledCardLinks>
+						{liveUrl && <StyledLink href={liveUrl}>Live</StyledLink>}
+						{repoUrl && <StyledLink href={repoUrl}>Repo</StyledLink>}
+					</StyledCardLinks>
+				)}
+			</StyledCardBody>
 		</StyledCard>
 	);
 }
@@ -34,11 +37,27 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 const StyledCard = styled.article`
 	display: flex;
 	flex-direction: column;
-	gap: var(--space-3);
-	padding: var(--space-6);
 	background: var(--color-surface);
 	border: 1px solid var(--color-border);
 	border-radius: var(--radius-md);
+	overflow: hidden;
+	min-width: 0;
+	flex-shrink: 0;
+`;
+
+const StyledThumbnail = styled.div`
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	background: var(--color-bg-subtle);
+	border-bottom: 1px solid var(--color-border);
+`;
+
+const StyledCardBody = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-3);
+	padding: var(--space-6);
+	flex: 1;
 `;
 
 const StyledTitle = styled.h3`

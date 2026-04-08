@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { About, Contact, Footer, Hero, Navbar, Projects } from './components';
+import { Contact, Footer, Hero, Interlude, Navbar, Projects } from './components';
 
 export default function App() {
 	return (
@@ -8,7 +8,7 @@ export default function App() {
 			<Navbar />
 			<main>
 				<Hero />
-				<About />
+				<Interlude />
 				<Projects />
 				<Contact />
 			</main>

@@ -3,6 +3,7 @@ export { default as Navbar } from './layout/Navbar';
 export { default as About } from './sections/About';
 export { default as Contact } from './sections/Contact';
 export { default as Hero } from './sections/Hero';
+export { default as Interlude } from './sections/Interlude';
 export { default as Projects } from './sections/Projects';
 export { default as Button } from './ui/Button';
 export { default as ProjectCard } from './ui/ProjectCard';

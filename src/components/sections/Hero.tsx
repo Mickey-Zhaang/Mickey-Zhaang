@@ -22,35 +22,35 @@ const ROLE_LABELS: RoleLabel[] = [
 	{
 		text: 'ENGINEER',
 		orientation: 'horizontal',
-		top: '35cqh',
+		top: '8cqh',
 		left: '12cqw',
 		size: '6.6cqw',
 	},
 	{
 		text: 'DESIGNER',
 		orientation: 'horizontal',
-		top: '22cqh',
+		top: '-5cqh',
 		left: '34cqw',
 		size: '5.5cqw',
 	},
 	{
 		text: 'DATA',
 		orientation: 'horizontal',
-		top: '50cqh',
+		top: '23cqh',
 		left: '29cqw',
 		size: '5.3cqw',
 	},
 	{
 		text: 'FRONTEND',
 		orientation: 'vertical-up',
-		top: '-16cqh',
+		top: '-43cqh',
 		left: '27cqw',
 		size: '4.9cqw',
 	},
 	{
 		text: 'DEVELOPER',
 		orientation: 'vertical-down',
-		top: '38cqh',
+		top: '11cqh',
 		left: '43cqw',
 		size: '4.8cqw',
 	},
@@ -70,8 +70,8 @@ export default function Hero() {
 			const tl = gsap.timeline({
 				defaults: {
 					autoAlpha: 0,
-					duration: 1.5,
-					ease: 'power2.out',
+					duration: 1.0,
+					ease: 'power1.out',
 				},
 			});
 
@@ -136,9 +136,13 @@ const StyledHero = styled.section`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	min-height: 120vh;
+	min-height: 135vh;
 	padding: calc(var(--navbar-height) + var(--space-16)) var(--space-8)
 		var(--space-16);
+
+	@media (max-width: 768px) {
+		max-height: unset;
+	}
 `;
 
 const StyledComposition = styled.div`
@@ -148,25 +152,30 @@ const StyledComposition = styled.div`
 	max-width: var(--max-width-content);
 	aspect-ratio: 2 / 1;
 
-	@media (max-width: 600px) {
+	@media (max-width: 768px) {
+		container-type: normal;
 		aspect-ratio: unset;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 `;
 
 const StyledSidebar = styled.div`
 	position: absolute;
 	right: 6cqw;
-	top: -8cqh;
+	top: -35cqh;
 	width: 28cqw;
 	display: flex;
 	flex-direction: column;
 	gap: var(--space-3);
 
-	@media (max-width: 600px) {
+	@media (max-width: 768px) {
 		position: static;
 		width: 100%;
 		max-width: 280px;
 		padding-top: var(--space-8);
+		align-items: center;
 	}
 `;
 
@@ -220,11 +229,12 @@ const StyledLabel = styled.span<StyledLabelProps>`
 	transform: ${({ $orientation }) =>
 		$orientation === 'vertical-up' ? 'rotate(180deg)' : 'none'};
 
-	@media (max-width: 600px) {
+	@media (max-width: 768px) {
 		position: static;
 		display: block;
 		writing-mode: horizontal-tb;
-		transform: none;
+		transform: none !important;
 		font-size: clamp(1.5rem, 7vw, 2.5rem);
+		text-align: center;
 	}
 `;

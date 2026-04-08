@@ -6,11 +6,14 @@ export interface NavLink {
 	href: string;
 }
 
+export type ProjectCategory = 'Software' | 'Design';
+
 export interface Project {
 	id: string;
 	title: string;
 	description: string;
 	tags: string[];
+	category: ProjectCategory;
 	liveUrl?: string;
 	repoUrl?: string;
 }

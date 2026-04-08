@@ -10,6 +10,12 @@
 	--color-accent: #3d2b1f;
 	--color-accent-hover: #5c3d2e;
 
+	/* ── Dark palette ─────────────────────────────────────────────────────────── */
+	--color-dark-bg: #0a0a0a;
+	--color-dark-surface: #141414;
+	--color-dark-text-primary: #f0ebe3;
+	--color-dark-text-secondary: #7a7470;
+
 	/* Scrollbar */
 	--scrollbar-track: #0a0101;
 	--scrollbar-thumb: #2a1a1a;
@@ -48,16 +54,18 @@
 	--space-16: 4rem;
 	--space-24: 6rem;
 	--space-32: 8rem;
+	--space-48: 12rem;
 
 	/* ── Layout ───────────────────────────────────────────────────────────────── */
 	--max-width-content: 1100px;
 	--max-width-narrow: 900px;
-	--navbar-height: 64px;
+	--navbar-height: 68px;
 
 	/* ── Transitions ──────────────────────────────────────────────────────────── */
 	--duration-fast: 150ms;
 	--duration-normal: 250ms;
 	--duration-slow: 400ms;
+	--duration-slower: 650ms;
 	--duration-reveal: 480ms;
 	--ease-default: ease;
 	--ease-out: cubic-bezier(0, 0, 0.2, 1);
@@ -76,6 +84,16 @@
 	--z-navbar: 200;
 	--z-modal: 300;
 	--z-toast: 400;
+}
+
+[data-theme="dark"] {
+	--color-bg:             var(--color-dark-bg);
+	--color-bg-subtle:      var(--color-dark-surface);
+	--color-surface:        #1e1e1e;
+	--color-border:         rgba(240, 235, 227, 0.12);
+	--color-text-primary:   var(--color-dark-text-primary);
+	--color-text-secondary: var(--color-dark-text-secondary);
+	--color-text-inverse:   var(--color-dark-bg);
 }
 
 html {
