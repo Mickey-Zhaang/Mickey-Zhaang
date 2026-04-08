@@ -34,10 +34,10 @@ const ROLE_LABELS: RoleLabel[] = [
 		size: '5.5cqw',
 	},
 	{
-		text: 'DATA',
+		text: 'PRODUCT',
 		orientation: 'horizontal',
 		top: '23cqh',
-		left: '29cqw',
+		left: '19cqw',
 		size: '5.3cqw',
 	},
 	{
@@ -65,6 +65,8 @@ export default function Hero() {
 	const containerRef = useRef<HTMLElement | null>(null);
 
 	useEffect(() => {
+		let snapEntrance: (() => void) | null = null;
+
 		const ctx = gsap.context(() => {
 			// ─── 1. ENTRANCE TIMELINE ──────────────────────────────────────────
 			const tl = gsap.timeline({
@@ -79,12 +81,21 @@ export default function Hero() {
 			tl.from('[data-orientation="vertical-up"]', { y: 50 }, 0.2);
 			tl.from('[data-orientation="vertical-down"]', { y: -50 }, 0.3);
 
+			// Snap entrance to completion on first scroll so exit tl never
+			// inherits a mid-stagger state.
+			snapEntrance = () => {
+				tl.progress(1).kill();
+				ScrollTrigger.removeEventListener('scrollStart', snapEntrance!);
+				snapEntrance = null;
+			};
+			ScrollTrigger.addEventListener('scrollStart', snapEntrance);
+
 			// ─── 2. SCROLL EXIT TIMELINE ───────────────────────────────────────
 			const exitTl = gsap.timeline({
 				scrollTrigger: {
 					trigger: containerRef.current,
 					start: '10% top',
-					end: '+=300',
+					end: '+=180',
 					scrub: 1,
 				},
 				defaults: {
@@ -99,7 +110,11 @@ export default function Hero() {
 			exitTl.to('[data-orientation="vertical-down"]', { y: -50 }, 0);
 		}, containerRef);
 
-		return () => ctx.revert();
+		return () => {
+			if (snapEntrance)
+				ScrollTrigger.removeEventListener('scrollStart', snapEntrance);
+			ctx.revert();
+		};
 	}, []);
 
 	return (
@@ -148,8 +163,9 @@ const StyledHero = styled.section`
 const StyledComposition = styled.div`
 	container-type: size;
 	position: relative;
-	width: var(--max-width-content);
+	width: min(var(--max-width-content), 100%);
 	aspect-ratio: 2 / 1;
+	margin-top: var(--space-24);
 
 	@media (max-width: 768px) {
 		container-type: normal;

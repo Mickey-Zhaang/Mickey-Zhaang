@@ -115,6 +115,7 @@ const StyledLogoText = styled.span`
 	font-weight: var(--font-weight-medium);
 	color: var(--nav-text);
 	transition: color var(--duration-slower) var(--ease-in-out);
+	word-break: break-word;
 `;
 
 const StyledLinks = styled.ul`

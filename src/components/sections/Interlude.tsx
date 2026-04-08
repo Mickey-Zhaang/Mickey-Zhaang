@@ -14,7 +14,7 @@ const StyledInterlude = styled.section`
 	display: flex;
 	align-items: flex-end;
 	justify-content: flex-start;
-	min-height: 60vh;
+	min-height: 45vh;
 	background: var(--color-dark-bg);
 	padding: 18rem var(--space-32);
 `;
