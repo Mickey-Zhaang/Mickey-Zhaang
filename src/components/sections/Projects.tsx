@@ -13,7 +13,8 @@ const PROJECTS: Project[] = [
 	{
 		id: 'p1',
 		title: 'Project One',
-		description: 'A brief description of what this project does and why it matters.',
+		description:
+			'A brief description of what this project does and why it matters.',
 		tags: ['React', 'TypeScript'],
 		category: 'Software',
 		liveUrl: '#',
@@ -104,7 +105,11 @@ export default function Projects() {
 	}
 
 	return (
-		<StyledSection id="projects" aria-label="Projects" ref={sectionRef} data-theme="dark">
+		<StyledSection
+			id="projects"
+			aria-label="Projects"
+			ref={sectionRef}
+			data-theme="dark">
 			<StyledPanel ref={panelRef}>
 				<StyledHeader>
 					<StyledSectionHeading>Projects</StyledSectionHeading>
@@ -137,8 +142,9 @@ const StyledSection = styled.section`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	min-height: 100vh;
+	min-height: 140vh;
 	background: var(--color-bg);
+	padding-bottom: var(--space-32);
 `;
 
 const StyledPanel = styled.div`

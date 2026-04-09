@@ -15,6 +15,7 @@
 	--color-dark-surface: #141414;
 	--color-dark-text-primary: #f0ebe3;
 	--color-dark-text-secondary: #7a7470;
+	--color-secondary-dark-accent: #075466 ;
 
 	/* Scrollbar */
 	--scrollbar-track: #0a0101;
@@ -115,7 +116,7 @@ body {
 }
 
 #root {
-	min-height: 100vh;
+	min-height: 110vh;
 }
 
 /* Custom Scrollbar — Chrome, Safari, Edge */

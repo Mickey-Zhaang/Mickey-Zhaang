@@ -164,8 +164,10 @@ const StyledComposition = styled.div`
 	container-type: size;
 	position: relative;
 	width: min(var(--max-width-content), 100%);
+	max-height: calc(120svh - var(--navbar-height) - var(--space-32));
+	max-width: calc(2 * (100svh - var(--navbar-height) - var(--space-32)));
 	aspect-ratio: 2 / 1;
-	margin-top: var(--space-24);
+	margin-top: 0;
 
 	@media (max-width: 768px) {
 		container-type: normal;
