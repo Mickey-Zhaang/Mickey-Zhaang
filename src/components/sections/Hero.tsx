@@ -94,8 +94,8 @@ export default function Hero() {
 			const exitTl = gsap.timeline({
 				scrollTrigger: {
 					trigger: containerRef.current,
-					start: '10% top',
-					end: '+=180',
+					start: '5% top',
+					end: '+=150',
 					scrub: 1,
 				},
 				defaults: {
@@ -151,12 +151,13 @@ const StyledHero = styled.section`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	min-height: 150vh;
+	min-height: 120vh;
 	padding: calc(var(--navbar-height) + var(--space-16)) var(--space-8)
 		var(--space-16);
 
 	@media (max-width: 768px) {
-		max-height: unset;
+		align-items: flex-start;
+		padding-bottom: 20rem;
 	}
 `;
 
@@ -167,11 +168,12 @@ const StyledComposition = styled.div`
 	max-height: calc(120svh - var(--navbar-height) - var(--space-32));
 	max-width: calc(2 * (100svh - var(--navbar-height) - var(--space-32)));
 	aspect-ratio: 2 / 1;
-	margin-top: 0;
+	margin-top: var(--space-48);
 
 	@media (max-width: 768px) {
 		container-type: normal;
 		aspect-ratio: unset;
+		margin-top: 0;
 		display: flex;
 		flex-direction: column;
 		align-items: center;

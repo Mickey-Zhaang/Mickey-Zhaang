@@ -14,7 +14,16 @@ const WORDS = [
 	'skills',
 	'with people',
 	'relationships',
+	'ambitiously',
 ];
+
+function shuffleInPlace<T>(arr: T[]): T[] {
+	for (let i = arr.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[arr[i], arr[j]] = [arr[j], arr[i]];
+	}
+	return arr;
+}
 
 export default function ProjectInterlude() {
 	const { ref, isVisible } = useIntersectionObserver({
@@ -27,11 +36,17 @@ export default function ProjectInterlude() {
 		if (!isVisible || !textRef.current) return;
 
 		const ctx = gsap.context(() => {
+			let words = shuffleInPlace([...WORDS]);
+
+			const nextWord = () => {
+				if (words.length === 0) words = shuffleInPlace([...WORDS]);
+				return words.pop()!;
+			};
+
 			const typeWord = (word: string) => {
 				const tl = gsap.timeline({
 					onComplete: () => {
-						const next = WORDS[Math.floor(Math.random() * WORDS.length)];
-						typeWord(next);
+						typeWord(nextWord());
 					},
 				});
 
@@ -64,7 +79,7 @@ export default function ProjectInterlude() {
 				tl.to({}, { duration: 1 });
 			};
 
-			typeWord(WORDS[Math.floor(Math.random() * WORDS.length)]);
+			typeWord(nextWord());
 		}, textRef);
 
 		return () => ctx.revert();
@@ -102,7 +117,7 @@ const StyledInterlude = styled.section`
 	align-items: flex-end;
 	justify-content: flex-start;
 	flex-wrap: wrap;
-	min-height: 10vh;
+	min-height: 40vh;
 	column-gap: 20px;
 	row-gap: 0;
 	background: var(--color-dark-bg);

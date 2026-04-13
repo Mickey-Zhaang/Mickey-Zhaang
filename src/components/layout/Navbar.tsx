@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import type { NavLink } from '../../types';
 
 const NAV_LINKS: NavLink[] = [
-	{ label: 'About', href: '#about' },
 	{ label: 'Projects', href: '#projects-start' },
 	{ label: 'Contact', href: '#contact' },
 ];
@@ -18,7 +17,7 @@ export default function Navbar() {
 
 	useEffect(() => {
 		function handleScroll() {
-			const floating = window.scrollY > window.innerHeight * 0.2;
+			const floating = window.scrollY > window.innerHeight * 0.05;
 			setIsFloating(floating);
 
 			const navCenterY = floating ? 54 : 32;
