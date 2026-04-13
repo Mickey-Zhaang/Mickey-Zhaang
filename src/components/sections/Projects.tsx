@@ -2,7 +2,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styled from 'styled-components';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 import type { Project } from '../../types';
 import ProjectCard from '../ui/ProjectCard';
@@ -45,19 +45,9 @@ const PROJECTS: Project[] = [
 	},
 ];
 
-const CATEGORIES = ['All', 'Software', 'Design'] as const;
-type CategoryFilter = (typeof CATEGORIES)[number];
-
 export default function Projects() {
 	const sectionRef = useRef<HTMLElement | null>(null);
 	const panelRef = useRef<HTMLDivElement | null>(null);
-	const trackRef = useRef<HTMLDivElement | null>(null);
-	const [activeCategory, setActiveCategory] = useState<CategoryFilter>('All');
-
-	const visibleProjects =
-		activeCategory === 'All'
-			? PROJECTS
-			: PROJECTS.filter(p => p.category === activeCategory);
 
 	// ─── 3D scroll reveal ─────────────────────────────────────────────────────
 	useEffect(() => {
@@ -84,26 +74,6 @@ export default function Projects() {
 		return () => ctx.revert();
 	}, []);
 
-	// ─── Category card entrance ────────────────────────────────────────────────
-	useEffect(() => {
-		const ctx = gsap.context(() => {
-			gsap.from('[data-project-card]', {
-				autoAlpha: 0,
-				y: 20,
-				duration: 0.35,
-				ease: 'power2.out',
-				stagger: 0.07,
-			});
-		}, trackRef);
-
-		return () => ctx.revert();
-	}, [activeCategory]);
-
-	function handleCategoryChange(cat: CategoryFilter) {
-		if (cat === activeCategory) return;
-		setActiveCategory(cat);
-	}
-
 	return (
 		<StyledSection
 			id="projects"
@@ -111,23 +81,9 @@ export default function Projects() {
 			ref={sectionRef}
 			data-theme="dark">
 			<StyledPanel ref={panelRef}>
-				<StyledHeader>
-					<StyledSectionHeading>Projects</StyledSectionHeading>
-					<StyledTabBar role="tablist" aria-label="Filter projects by category">
-						{CATEGORIES.map(cat => (
-							<StyledTab
-								key={cat}
-								role="tab"
-								aria-selected={activeCategory === cat}
-								$active={activeCategory === cat}
-								onClick={() => handleCategoryChange(cat)}>
-								{cat}
-							</StyledTab>
-						))}
-					</StyledTabBar>
-				</StyledHeader>
-				<StyledTrack ref={trackRef}>
-					{visibleProjects.map(project => (
+				<StyledHeading>Projects</StyledHeading>
+				<StyledTrack>
+					{PROJECTS.map(project => (
 						<ProjectCard key={project.id} project={project} />
 					))}
 				</StyledTrack>
@@ -154,60 +110,18 @@ const StyledPanel = styled.div`
 	will-change: transform;
 `;
 
-const StyledHeader = styled.div`
-	display: flex;
-	align-items: baseline;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	gap: var(--space-4);
-	margin-bottom: var(--space-8);
-	padding-inline: var(--space-8);
-`;
-
-const StyledSectionHeading = styled.h2`
+const StyledHeading = styled.h2`
 	font-size: var(--font-size-xl);
 	font-weight: var(--font-weight-bold);
 	color: var(--color-text-primary);
-`;
-
-const StyledTabBar = styled.div`
-	display: flex;
-	gap: var(--space-2);
-`;
-
-interface StyledTabProps {
-	$active: boolean;
-}
-
-const StyledTab = styled.button<StyledTabProps>`
-	padding: var(--space-2) var(--space-4);
-	border-radius: var(--radius-pill);
-	border: 1px solid
-		${({ $active }) =>
-			$active ? 'var(--color-text-primary)' : 'var(--color-border)'};
-	background: ${({ $active }) =>
-		$active ? 'var(--color-text-primary)' : 'transparent'};
-	color: ${({ $active }) =>
-		$active ? 'var(--color-text-inverse)' : 'var(--color-text-secondary)'};
-	font-size: var(--font-size-sm);
-	font-weight: var(--font-weight-medium);
-	cursor: pointer;
-	transition:
-		background var(--duration-normal) var(--ease-default),
-		border-color var(--duration-normal) var(--ease-default),
-		color var(--duration-normal) var(--ease-default);
-
-	&:hover {
-		border-color: var(--color-text-primary);
-		color: ${({ $active }) =>
-			$active ? 'var(--color-text-inverse)' : 'var(--color-text-primary)'};
-	}
+	margin-bottom: var(--space-8);
+	padding-inline: var(--space-8);
 `;
 
 const StyledTrack = styled.div`
 	display: flex;
 	gap: var(--space-6);
-	overflow-x: auto;
+	overflow-x: scroll;
 	scroll-snap-type: x mandatory;
 	scroll-padding-inline: var(--space-8);
 	padding-inline: var(--space-8);
